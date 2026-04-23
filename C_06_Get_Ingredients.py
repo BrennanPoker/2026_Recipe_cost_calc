@@ -89,10 +89,6 @@ def get_ingredients():
 
     ingredient_frame = pandas.DataFrame(ingredient_dict)
 
-    ingredient_frame["Servings Possible"] = (
-        ingredient_frame["Amount Bought"] / ingredient_frame["Amount Needed"]
-    )
-
     return ingredient_frame
 
 
