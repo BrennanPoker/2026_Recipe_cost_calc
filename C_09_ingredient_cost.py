@@ -88,7 +88,7 @@ def get_ingredients():
     while True:
 
         # Get ingredient name
-        name = not_blank("Ingredient name (or 'xxx' to stop): ")
+        name = not_blank("\nIngredient name (or 'xxx' to stop): ")
 
         # Check user enters at least one ingredient
         if name == "xxx" and len(all_names) == 0:

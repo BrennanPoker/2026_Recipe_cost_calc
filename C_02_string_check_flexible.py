@@ -20,13 +20,8 @@ def string_check(question, valid_ans_list=('yes', 'no'),
         print(f"Please choose an option from valid {valid_ans_list}")
 
 # Main routine goes here
-# payment_list = ['cash', 'credit']
 
 while True:
     want_instructions = string_check("Do you want to see the instructions? ")
     print(f"You chose {want_instructions}")
     print()
-
-
-#   pay_method = string_check("Payment method: ", payment_list, 2)
-#   print(f"You chose {pay_method}")
