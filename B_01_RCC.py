@@ -87,7 +87,7 @@ def ingredient_cost_used(cost, amount_bought, amount_needed):
 
 
 def convert_amount(amount, unit):
-    """Converts litres/kg into ml/g"""
+    """Converts L / kg into ml / g"""
 
     conversions = {
         "l": ("ml", 1000),
@@ -100,7 +100,7 @@ def convert_amount(amount, unit):
     return amount * multiplier, new_unit
 
 def display_amount(amount, unit):
-    """Converts g→kg and ml→L for display when appropriate"""
+    """Converts g to kg and ml to L for final table"""
     if unit == "g":
         if amount >= 1000:
             return f"{amount / 1000:g} kg"
@@ -230,7 +230,7 @@ def get_ingredients():
 
         total_recipe_cost += used_cost
 
-        # Store data
+        # Stores data
         all_names.append(name)
         all_types.append(ingred_type)
 
