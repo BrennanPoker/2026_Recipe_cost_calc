@@ -99,6 +99,17 @@ def convert_amount(amount, unit):
     new_unit, multiplier = conversions[unit]
     return amount * multiplier, new_unit
 
+def display_amount(amount, unit):
+    """Converts g→kg and ml→L for display when appropriate"""
+    if unit == "g":
+        if amount >= 1000:
+            return f"{amount / 1000:g} kg"
+        return f"{amount:g} g"
+    elif unit == "ml":
+        if amount >= 1000:
+            return f"{amount / 1000:g} L"
+        return f"{amount:g} ml"
+    return f"{amount:g} {unit}"
 
 def get_ingredients():
     """Gets ingredient information"""
@@ -180,11 +191,11 @@ def get_ingredients():
 
             if ingred_type == "liquid":
                 valid_units = ["ml", "l"]
-                unit_text = "ml/L"
+                unit_text = "ml / L"
 
             else:
                 valid_units = ["g", "kg"]
-                unit_text = "g/kg"
+                unit_text = "g / kg"
 
             # gets unit type for conversion and final table
             while True:
@@ -202,15 +213,16 @@ def get_ingredients():
 
                 bought = num_check(f"Amount bought ({unit}): ")
 
-                # makes sure that amount bought is higher than amount needed
-                # (you can't make something without the right amount of ingredient)
                 if bought >= needed:
                     break
 
                 print("Amount bought cannot be less than amount needed.")
 
-            bought, unit = convert_amount(bought, unit)
-            needed, unit = convert_amount(needed, unit)
+            # Converts both amounts
+            bought, converted_unit = convert_amount(bought, unit)
+            needed, _ = convert_amount(needed, unit)
+
+            unit = converted_unit
 
         cost = num_check(f"Cost of {bought} {unit} ($): ")
 
@@ -222,8 +234,8 @@ def get_ingredients():
         all_names.append(name)
         all_types.append(ingred_type)
 
-        amount_bought_list.append(f"{bought} {unit}")
-        amount_needed_list.append(f"{needed} {unit}")
+        amount_bought_list.append(display_amount(bought, unit))
+        amount_needed_list.append(display_amount(needed, unit))
 
         cost_list.append(f"${cost:.2f}")
         cost_used_list.append(f"${used_cost:.2f}")

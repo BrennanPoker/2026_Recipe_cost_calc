@@ -35,10 +35,13 @@ def not_blank(question):
 
         print("Sorry, this can't be blank. Please try again.\n")
 
+
+
 # Main Routine goes here
 
 # Loop for testing purposes
-recipe_name = not_blank("Recipe name: ")
-serving_size = num_check(question="Serving size: ", num_type="integer")
-print(f"You are making {serving_size} {recipe_name}")
-print()
+while True:
+    recipe_name = not_blank("Recipe name: ")
+    serving_size = num_check(question="Serving size: ", num_type="integer")
+    print(f"You are making {serving_size} {recipe_name}")
+    print()
