@@ -111,7 +111,7 @@ def display_amount(amount, unit):
 def get_ingredients():
     """Collects ingredient information and creates a table."""
 
-    # Lists for dataframe
+    # Lists to store ingredient info for dataframe
     names, types = [], []
     bought_list, needed_list = [], []
     cost_list, used_cost_list = [], []
@@ -171,7 +171,7 @@ def get_ingredients():
             needed = num_check(f"Amount needed ({unit}): ")
             bought = num_check(f"Amount bought ({unit}): ")
 
-            # Converts both amounts
+            # Converts both amounts to their standard units (g / ml) for calculations
             bought, converted_unit = convert_amount(bought, unit)
             needed, _ = convert_amount(needed, unit)
 
@@ -202,7 +202,7 @@ def get_ingredients():
         "Cost Used ($)": used_cost_list
     }
 
-    # Creates dataframe
+    # Creates dataframe with the ingredient info
     dataframe = pandas.DataFrame(ingredient_dict)
 
     # Makes dataframe into a table
@@ -228,7 +228,7 @@ if want_instructions == "yes":
 
 print()
 
-# Gets recipe name and serving size and outputs
+# Gets recipe name and serving size
 recipe_name = not_blank("Recipe name: ")
 serving_size = num_check("Serving size: ", "integer")
 
