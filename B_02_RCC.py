@@ -241,7 +241,7 @@ ingredient_table, total_recipe_cost = get_ingredients()
 # Gets cost per serving size
 cost_per_serving = total_recipe_cost / serving_size
 
-# Output area... Recipe summary area
+# Output area.. Recipe summary area
 # (Restates Recipe and serving size, as well as shows table
 # and final cost and cost per serving)
 make_statement("Recipe Summary", "=")
